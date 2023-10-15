@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Block</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #f8f9fa;
+            font-size: 2rem;
+        }
+
+        pre {
+            background-color: #212529;
+            border: none;
+            margin: 10px 0;
+        }
+
+        pre code {
+            color: #f8f9fa;
+        }
+
+        .copy-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-4">Copy Block</h1>
+        <div id="output" class="mt-4"></div>
+        <div class="copy-container">
+            <button class="copy-button" onclick="copyCode()">Copy Code</button>
+            <pre>
+                <code>
+                    // Your code block here
+                    function examplePattern() {
+                        // Code for the programming pattern
+                    }
+                </code>
+            </pre>
+        </div>
+    </div>
+    <script>
+        function copyCode() {
+            const codeBlock = document.querySelector('pre code');
+            const textArea = document.createElement('textarea');
+            textArea.value = codeBlock.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('Code has been copied to the clipboard');
+        }
+    </script>
+</body>
+
+</html>
